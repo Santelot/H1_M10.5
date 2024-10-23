@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H1 - M10.5</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Preparar el ambiente y motivar a los genios para el reto.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy pondremos en práctica un reto donde usaremos prompts de rol para trabajar en equipo con IA. Vamos a diseñar un espacio verde para nuestra comunidad."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Si se sienten preparados para diseñar un parque, levanten una mano. Si todavía están se la están pensando, crucen los brazos un momento."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntemos nuestras manos para agradecer la oportunidad de aprender y trabajar juntos. ¡Gracias por asistir!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos dos objetivos: 1. Usar prompts de rol para colaborar con la IA como un Arquitecto Paisajista. 2. Crear un plan integral para un parque comunitario."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">✨ Actividad 2: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Pausa breve para conectar con el presente y prepararse para el reto.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Pies en el Piso".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, antes de iniciar el reto, vamos a hacer una breve pausa. Siéntense con ambos pies bien apoyados en el piso. Tómense un minuto para sentir el contacto con el suelo y enfocar su mente en el presente."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 "Cronómetro - 1 minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Esta breve pausa nos ayuda a hacer grounding, es decir, conectar con el presente y despejar la mente. Esto es clave antes de iniciar un reto que requiere concentración y creatividad. Ahora que estamos más enfocados, vamos directo al próximo paso."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 3: Team Gnius ⏰ Tiempo: 5 minutos</div>
+        <div class="subtitle">Formación de equipos y distribución de tareas.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ahora formarán equipos de 4 personas. Intenten armar equipos diferentes a los del reto pasado, para que puedan trabajar con nuevas perspectivas. Tienen 1 minuto para organizarse."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Cronómetro - 1 minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 11 "Recoger Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que están en equipos, un representante de cada grupo pasará a recoger las Magic Tablets. Aprovechen este momento para hablar sobre cómo distribuirán las tareas del reto."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Cronómetro - 1 minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 4: Challenge ⏰ Tiempo: 39 minutos</div>
+        <div class="subtitle">Usar prompts de rol para crear un parque comunitario en colaboración con IA.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 13 "Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, tenemos un reto ambicioso por delante. Imaginen que hay un espacio abandonado en el corazón de su ciudad, y ustedes tienen la misión de convertirlo en un parque vibrante que reúna a la comunidad. Puesto a que no es una tarea fácil, sería de mucha utilidad tener a la mano a un experto que los pudiera ayudar a llevar a cabo cualquier idea. Sería maravilloso que ese expertise esté siempre a su disposición, y si nos permitimos soñar otro poco, sería genial poder diseñar a nuestro experto. Ustedes ya saben a qué voy con esto, porque para este punto hemos puesto en práctica ya roles dentro de la IA. Hoy practicaremos usar prompts de rol para guiar a la IA como si fuera el experto que necesitan para hacer realidad cualquier proyecto, y que este forme parte de su equipo. ¿Listos para transformar ese terreno abandonado en un espacio próspero?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 14 "Reglas del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La regla más importante: su única fuente de información será ChatGPT. No pueden buscar datos en ningún otro lugar. Traten a la IA como si fuera el quinto miembro del equipo. La primera tarea será definir su rol: ¿Cómo quieren que se comporte? ¿Qué conocimientos debe tener? La forma en la que diseñen el prompt de rol será crucial para el éxito del proyecto. Después de definir el rol, usarán la IA para planificar, diseñar y preparar su propuesta. Cada etapa requerirá de su creatividad y organización."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 15 "Fase 1: Entender el Proyecto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El primer paso en cualquier proyecto es conocer los detalles. Tienen acceso a la información sobre el terreno: el tamaño, las condiciones actuales y lo que la comunidad desea ver allí. También tienen que tomar en cuenta las restricciones ambientales y presupuestales. Vamos a tomarnos unos minutos para analizar y estudiar los requerimientos del proyecto. Consejo: Pídanle a la IA que resuma los puntos más importantes para asegurarse de que no se les escape nada relevante."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (5 minutos):</strong> Proyectar Diapositiva 16 "Cronómetro - 5 minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (0.5 minutos):</strong> Proyectar Diapositiva 17 "Fase 2: Definir el Rol".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que tenemos la información, es hora de llamar a un experto. Esta fase es clave: definirán cómo se comportará la IA. Pregúntense: ¿Quieren que sea formal y precisa o más colaborativa y creativa? ¿Cuántos años de experiencia debería tener? Imaginen que están contratando a un profesional para el proyecto y elijan bien sus cualidades. El éxito dependerá de qué tan claro sea este rol. Consejo: Prueben diferentes versiones del prompt hasta encontrar la que mejor responda a sus necesidades."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (3 minutos):</strong> Proyectar Diapositiva 18 "Cronómetro - 3 minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (1 minuto):</strong> Proyectar Diapositiva 19 "Fase 3: Desarrollo de Ideas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que tenemos diseñado a nuestro experto, es hora de plantearle el proyecto y compartirle nuestras ideas o... ¡Incluso pedirle propuestas de ideas! En esta etapa usarán su prompt de rol para pedirle a la IA recomendaciones sobre el diseño. Pueden preguntarle sobre la distribución del parque, cómo integrar elementos sostenibles y qué consideraciones de seguridad deben tener. Recuerden: el valor de esta fase está en hacer preguntas estratégicas y refinar las respuestas. Aprovechen la IA para: potenciar y validar las ideas que tengan, aclarar y entender parámetros o información compleja que no comprendan, e inclusive para proponer ideas y aportar como si fuera el quinto miembro del equipo. Consejo: Si una respuesta no es lo que esperaban, ajusten el prompt o hagan preguntas de seguimiento."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (7 minutos):</strong> Proyectar Diapositiva 20 "Cronómetro - 7 minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+
+    <tr>
+        <td><strong>PASO 9 (0.5 minutos):</strong> Proyectar Diapositiva 21 "Fase 4: Propuesta".</td>
+        <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora es momento de organizar toda la información en una propuesta clara y detallada. Divídanla en secciones: resumen ejecutivo, análisis del terreno, diseño propuesto, sostenibilidad, impacto comunitario y presupuesto. Recuerden que tienen frente a ustedes a un experto en Arquitectura Paisajista y Urbana, el cual tiene mucha experiencia elaborando propuestas de diseño y seguramente podrá acomodar todas sus ideas en un formato muy bien estructurado. Consejo: Usen la IA para verificar que no se olviden de ninguna sección importante. Una propuesta bien estructurada hará que sus ideas tengan mayor impacto."</td>
+    </tr>
+    <tr>
+        <td><strong>PASO 10 (7 minutos):</strong> Proyectar Diapositiva 22 "Cronómetro - 7 minutos".</td>
+        <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+    </tr>
+    <tr>
+        <td><strong>PASO 11 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Fase 5: Presentación".</td>
+        <td><strong>DIÁLOGO SUGERIDO:</strong> "Cada equipo preparará una presentación breve que resuma los puntos más importantes de su propuesta. Crearán lo que conocemos como un Elevator Pitch. Un Elevator Pitch es una presentación corta, de unos 30 segundos a 1 minuto, en la que explicas de forma clara y sencilla una idea, proyecto o negocio. Imagina que estás en un elevador con alguien importante y tienes solo el tiempo que dura el viaje para captar su atención y convencerlo de que tu propuesta vale la pena. Debes ser directo, interesante y dejar al otro con ganas de saber más. No se necesitan elementos gráficos para un Elevator Pitch pero tampoco les diré que no los hagan, lo dejo a consideración de ustedes. Consejo: Pídanle a la IA sugerencias sobre posibles preguntas que podrían hacer los stakeholders y cómo responderlas. Esto les ayudará a anticipar cualquier objeción."</td>
+    </tr>
+    <tr>
+        <td><strong>PASO 12 (5 minutos):</strong> Proyectar Diapositiva 24 "Cronómetro - 5 minutos".</td>
+        <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+    </tr>
+    <tr>
+        <td><strong>PASO 13 (0.5 minutos):</strong> Proyectar Diapositiva 25 "Presentaciones".</td>
+        <td><strong>DIÁLOGO SUGERIDO:</strong> "Seleccionaré al azar dos equipos para que presenten sus propuestas al resto de la clase como si fueran un consejo comunitario."</td>
+    </tr>
+    <tr>
+        <td><strong>PASO 14 (3 minutos):</strong> Proyectar Diapositiva 26 "Cronómetro - 3 minutos".</td>
+        <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+    </tr>
+    <tr>
+        <td><strong>PASO 15 (0.5 minutos):</strong> Proyectar Diapositiva 27 "Reflexión".</td>
+        <td><strong>DIÁLOGO SUGERIDO:</strong> "Hagamos una reflexión grupal sobre esta experiencia. ¿Qué aprendieron al trabajar con la IA? ¿Qué desafíos encontraron? ¿Cambiarían algo del proceso?"</td>
+    </tr>
+    <tr>
+        <td><strong>PASO 16 (3 minutos):</strong> Proyectar Diapositiva 28 "Cronómetro - 3 minutos".</td>
+        <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+    </tr>
+    <tr>
+        <td><strong>PASO 17 (0.5 minutos):</strong> Proyectar Diapositiva 29 "Objetivos Alcanzados".</td>
+        <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy completamos dos objetivos: 1. Aprendimos a utilizar prompts de rol para colaborar con la IA. 2. Creamos una propuesta detallada para un parque comunitario. ¡Gran trabajo, Genios!"</td>
+    </tr>
+    <tr>
+        <td><strong>PASO 18 (0.5 minutos):</strong> Proyectar Diapositiva 30 "You've Got Mon-e".</td>
+        <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Se llevan Mon-e por su gran desempeño."</td>
+    </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 5: Honor The Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Devolver las Magic Tablets y ordenar el espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minutos):</strong> Proyectar Diapositiva 31 "Honor The Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es momento de devolver las Magic Tablets y dejar todo en orden. Gracias por su trabajo hoy, hicieron un gran esfuerzo. Un espacio limpio refleja el respeto por lo que hacemos y por quienes compartimos este espacio. ¡Nos vemos en la próxima misión!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
